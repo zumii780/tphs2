@@ -2,7 +2,7 @@ import Data.List (sortBy)
 
 type Intervalo = (Int, Int)
 
-compararIntervalo :: Intervalo -> Intervalo -> Ord
+compararIntervalo :: Intervalo -> Intervalo -> Ordering
 compararIntervalo (_, b1) (_, b2) = compare b1 b2
 
 seleccionarIntervalos :: [Intervalo] -> [Intervalo]
