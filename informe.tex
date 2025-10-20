@@ -33,12 +33,12 @@ Formalmente:
 \begin{itemize}
     \item Un conjunto $C = \{(a_i, b_i) \mid a_i, b_i \in \mathbb{R}, a_i \le b_i\}$.
     
-    \item Dos intervalos $I_1 = (a_1, b_1)$ e $I_2 = (a_2, b_2)$ son disjuntos (compatibles) si no se superponen. Asumiendo la convención de intervalos semiabiertos $[a, b)$ (como inferimos en nuestro código, donde \texttt{inicioActual >= finUltimo}), la compatibilidad se define como:
+    \item Dos intervalos $I_1 = (a_1, b_1)$ e $I_2 = (a_2, b_2)$ son disjuntos (compatibles) si no se superponen. Asumiendo la convención de intervalos semiabiertos $(a, b)$, la compatibilidad se define como:
     $b_1 \le a_2$ o $b_2 \le a_1$.
     
     \item Debemos encontrar un subconjunto $C' \subseteq C$ tal que:
     \begin{enumerate}
-        \item \textbf{Validez:} $\forall I, J \in C', (I \neq J \implies I \text{ y } J \text{ son disjuntos})$.
+        \item \textbf{Validez:} $\forall I, J \in C', (I \text{ y } J \text{ son disjuntos})$.
         \item \textbf{Optimalidad:} $|C'|$ es máximo. Es decir, para cualquier otro subconjunto $S \subseteq C$ que cumpla la condición de validez, se tiene que $|S| \le |C'|$.
     \end{enumerate}
 \end{itemize}
@@ -103,8 +103,7 @@ Por la definición de optimalidad, $G$ no puede ser más grande que $O$, por lo 
 
 \paragraph{1. Caso Base: Soluciones Idénticas}
 Si la solución \textit{greedy} $G$ y la solución óptima $O$ son idénticas, entonces $k = m$ y 
-ya hemos demostrado que $G$ es óptima. Para el resto de la demostración,es decir, los demás casos, 
-asumimos que $G \neq O$.
+ya hemos demostrado que $G$ es óptima. Para el resto de la demostración, es decir, los demás casos, asumimos que $G \neq O$.
 
 \paragraph{2. Encontrar la Primera Diferencia}
 Si las soluciones no son idénticas, debe existir un primer intervalo en el que difieren. 
@@ -123,7 +122,7 @@ Esta es la propiedad fundamental de nuestra estrategia, que usaremos a continuac
 
 \paragraph{4. Demostración por Argumento de Intercambio}
 Ahora, creemos una nueva solución $O'$ a partir de la óptima $O$, reemplazando $o_i$ por $g_i$:
-\[ O' = (O \setminus \{o_i\}) \cup \{g_i\} = \{o_1, \dots, o_{i-1}, g_i, o_{i+1}, \dots, o_m\} \]
+\[ O' = \{o_1, \dots, o_{i-1}, g_i, o_{i+1}, \dots, o_m\} \]
 
 \textbf{Verificación de Validez de O':} Debemos demostrar que $O'$ sigue siendo un conjunto de intervalos disjuntos.
     \begin{enumerate}
